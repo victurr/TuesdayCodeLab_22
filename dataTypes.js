@@ -1,16 +1,19 @@
-function dataTypes( alphas,digits,bool,anArray,aFunction ) {
-  // if( arguments.length == 0 ){ return 'no value';}
-  if( alphas != null ){ return alphas.length;}
-  else if( digits != null ){
-    if( digits< 100 ){ return 'less than 100';}
-    else if( digits > 100 ){ return 'more than 100';}
+function dataTypes( anArgument ) {
+  if( anArgument == null || undefined ){ return 'no value';}
+  else if( typeof anArgument === "string" ){ return anArgument.length;}
+  else if( typeof anArgument === "number" ){
+    if( anArgument < 100 ){ return 'less than 100';}
+    else if( anArgument > 100 ){ return 'more than 100';}
     else{return 'equal to 100'}
   }
-  else if( bool != null ){ return bool;}
-  else if( anArray != null ){
-    if(anArray[2] != null){ return anArray[2]}
-    else{ return;}
+  else if( typeof anArgument === "boolean" ){ return anArgument;}
+  else if( typeof anArgument === "object" ){
+    if(anArgument[2] != null){ return anArgument[2]}
+    else{ return }
   }
-  else if(aFunction != null){ return aFunction(true); }
+  else if( typeof anArgument === "function"){ 
+    anArgument(true); 
+    return 'called callback';
+  }
   else{ return 'no value'}
 } 
